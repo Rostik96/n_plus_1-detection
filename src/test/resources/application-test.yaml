@@ -1,0 +1,7 @@
+spring:
+  test:
+    database:
+      replace: none
+  sql:
+    init:
+      mode: always
