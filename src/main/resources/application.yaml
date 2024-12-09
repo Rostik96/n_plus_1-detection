@@ -1,4 +1,12 @@
 spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:54322/migration
+    name: migration
+    username: rasta
+    password: rasta
+
+
   jpa:
     show-sql: true
     properties:

@@ -1,6 +1,5 @@
 package dev.rost.datasource.book;
 
-import dev.rost.datasource.AbstractPersistTest;
 import io.hypersistence.utils.jdbc.validator.SQLStatementCountValidator;
 import jakarta.persistence.EntityManager;
 import org.jetbrains.annotations.NotNull;
@@ -12,13 +11,15 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static io.hypersistence.utils.jdbc.validator.SQLStatementCountValidator.assertSelectCount;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-class BookRepositoryTest extends AbstractPersistTest {
+class BookRepositoryTest0 {
 
+	@Autowired DataSource dataSource;
 	@Autowired EntityManager em;
 	@Autowired BookRepository repository;
 
@@ -30,6 +31,7 @@ class BookRepositoryTest extends AbstractPersistTest {
 
 	@Test
 	void test() {
+		System.out.println("dataSource = " + dataSource);
 		var books = repository.findAll();
 		retrieveAuthors(books);
 		assertSelectCount(1 + books.size());
